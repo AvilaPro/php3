@@ -10,3 +10,6 @@ de error se mostraran.
 
 @antes de algun error: colocar el @ antes de un include o variable que de error
 hace que el aviso de error desaparezca.
+
+exceptions : la idea es capturar error y hacer excepciones con ellas para saber informar correctamente
+
