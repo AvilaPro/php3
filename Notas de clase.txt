@@ -1,0 +1,12 @@
+error_reporting: el php por defecto en desarrollo me muestra siempre los errores, pero hay forma de setearlo en el archivo php.
+
+Para mas informacion ir a: http://php.net/error-reporting
+
+ini_set('recibe dos parametros, el primero la directiva y el segundo el valor que quieres darle a aesa directiva'); : con esto seteamos alguna variable del php.ini
+ini_set('display_errors',0); : setea los errores 0 off y 1 on
+
+ini_set('error_reporting',E_ALL & ~E_WARNING & ~E_NOTICE); : permite setear que avisos
+de error se mostraran.
+
+@antes de algun error: colocar el @ antes de un include o variable que de error
+hace que el aviso de error desaparezca.
