@@ -1,0 +1,11 @@
+Enunciado de la tarea 1 de la sección 2921
+
+1.- crear una base de datos llamada cadif1 en phpmyadmin. Crear las siguientes tablas: estudiantes(cédula,nombre,apellido,edad,fecha_nacimiento), cursos(id,nombre,descripcion, anio_creacion)
+
+2.- crear un formulario html donde ingrese nombre de la base de datos, usuario y contraseña guardar en una variable de sesión.
+
+3.- Crear un archivo y en el una clase que le permita realizar una conexión a la base de datos anteriormente creada. el método que realice la conexión debe recibir por parámetro, el nombre de la base de datos, usuario y contraseña almacenados en la variable de sesión.
+
+4.- en caso que la conexión falle debe capturar la excepción, ademas debe modificar en el archivo php.ini la función error_reporting para que no muestre ninguna notificación de error, y debe activarla en tiempo de ejecución para que muestre todas las notificaciones de error.
+
+5.- enviar captures de pantalla de los pasos realizados en el objetivo 1 y 4 junto con el proyecto que contiene la conexión y la base de datos importada en formato SQL.
