@@ -8,16 +8,16 @@ and open the template in the editor.
 include_once "usuario.php";
 use Models\Usuario as U;
 
-$usuarios = new U;
+$conexion = new U;
 
 
 if(isset ($_GET["nombre"])) {
-    $usuarios= $usuarios->buscar($_GET["nombre"]);
+    $usuarios= $conexion->buscar($_GET["nombre"]);
     if(is_null($usuarios)){
         $error = "No existe ese dato";
     }
 }else{
-    $usuarios = $usuarios->leerTodos();
+    $usuarios = $conexion->leerTodos();
 }
 
 ?>
@@ -52,6 +52,19 @@ if(isset ($_GET["nombre"])) {
                 </tr>
             <?php endforeach; ?>
             </tbody>
+
+            <form action="index.php" method="get">
+                <label for="">Usuarios:</label>
+                <select name="ususarios" id="">
+                    <?php 
+                    foreach ($conexion->leerTodos() as $user) {
+                        echo "<option value='$user->id'>";
+                        echo $user->nombre;
+                        echo "</option>";
+                    }
+                    ?>
+                </select>
+            </form>
         </table>
     
         <!-- <pre>
