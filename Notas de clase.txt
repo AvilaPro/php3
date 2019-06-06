@@ -13,3 +13,8 @@ hace que el aviso de error desaparezca.
 
 exceptions : la idea es capturar error y hacer excepciones con ellas para saber informar correctamente
 
+clase 2:
+
+se antecede a las clases un \ para indicar que son clases globales, porque si colocamos un namespace no encontraria esa clase.
+
+
