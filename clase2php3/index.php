@@ -29,7 +29,7 @@ if(isset ($_GET["nombre"])) {
     </head>
     <body>
         <span><?php echo isset($error) ? $error: "" ?></span>
-        <form method"GET" action="index.php">
+        <form method="GET" action="index.php">
             <input type="text" name="nombre" placeholder="nombre">
             <input type="submit" value="Buscar">
         </form>

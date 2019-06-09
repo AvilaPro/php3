@@ -1,0 +1,17 @@
+Enunciado de la tarea 2 de la sección 2921
+
+Realizar las siguientes actividades:
+
+NOTA: subir el proyecto comprimido con la base de datos incluida en formato SQL.
+
+1.- Crear una clase abstracta que permita hacer la conexión con su Base de datos. Si la conexion no se da exitosamente, redireccionar a una pagina de error. En la base de datos creada debe crear llamada "asesores" con los campos "id", "nombre", "correo", "telefono".
+
+2.- crear una clase "Asesor" que herede de la clase abstracta que realiza la conexion y crear un metodo que ejecute una consulta a la tabla de "asesores" y mostrar en otra pagina llamada "listado_asesores.php" una tabla HTML nombre, correo y teléfono del profesor. El nombre del asesor debe servir como hipervinculo hacia una pagina que va a mostrar el listado de cursos del asesor.
+
+3.- En la base de datos crear una tabla "cursos" con los campos "idcurso","nombre" y "precio". Tomar en cuenta que un asesor puede impartir varios cursos y que cada curso puede ser impartido por mas de un asesor, por esto debe crear una tabla llamada "asesor_curso" y realizar las relaciones de clave foránea con las tablas asesor y curso correspondiente.(Leer un poco sobre claves foráneas en Base de datos).
+
+4.- Hacer otra pagina que muestre el listado de cursos de un profesor (tabla asesor_curso ), donde se muestre el nombre del curso y el precio. El listado debe filtrarse (usar el where) con el id del profesor al cual se le hizo click en el hipervinculo de la pagina "listado_asesores.php". hacer uso de algún método creado por usted en la clase Asesor, que retorne los cursos impartidos por un Asesor.
+
+5.- crear otra pagina php donde debe tener un formulario html para asignar un curso a un asesor, donde debe contener 2 entradas de tipo select, una que contenga todos los asesores y otro que contenga los cursos. Usar un metodo que realice la carga de los select, el metodo debe ser invocado 2 veces, para mostrar el select de asesores y el select de cursos. (no se registrara en base de datos).
+
+Descargar Archivo Adjunto

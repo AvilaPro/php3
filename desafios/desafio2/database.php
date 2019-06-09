@@ -1,6 +1,6 @@
 <?php
-namespace DB;
-use PDO;
+//namespace DB;
+
 abstract class Database{
     public function conectar(){
         try{
@@ -8,15 +8,19 @@ abstract class Database{
             $usuario = "root";
             $pass = "";
             
-            $conexion =  new PDO($dsn, $usuario, $pass);
-            echo "<h1 style=color:green>conexion exitosa</h1>";    
+            $conexion =  new \PDO($dsn, $usuario, $pass);
+            echo "<h1 style=color:green>conexion exitosa</h1>"; 
+
+             
             
             return $conexion;
             
-        } catch (PDOException $e) {
-            echo "Error".$e->getMessage();
-            
+        } catch (PDOException $e) {  
+            header("Location: error1.php");
         }
     }
 }
+
+
+
 ?>

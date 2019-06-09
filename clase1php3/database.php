@@ -1,8 +1,9 @@
 <?php
+
 class Conexion{
     public function conectar(){
         try{
-            $dsn = "mysql:host=localhost;dbname=db_cadif1";
+            $dsn = "mysql:host=localhost;dbname=cadif1";
             $usuario = "root";
             $pass = "";
             
@@ -12,17 +13,14 @@ class Conexion{
             return $conexion;
             
         } catch (PDOException $e) {
-            echo "Error".$e->getMessage();
+           echo "Error: ".$e->getMessage();
+                   
         }
     }
 }
+$con= new Conexion;
 
-$conexion = new Conexion();
+$con->conectar();
+?>
 
-$conexion->conectar();
-/* 
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 
