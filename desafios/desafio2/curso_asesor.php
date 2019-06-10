@@ -5,27 +5,10 @@ include 'asesor.php';
 use Models\Asesor;
 
 $as= new Asesor;
-$ase = new Asesor;
-$ases = new Asesor;
 
 $asesores= $as->leerTodos();
 
-print_r($_GET);
-
-if (isset($_GET["name"])) {
-	 	
-    $buscado = $ase->buscar($_GET["name"]);
-    print_r($buscado);
-    
-
-    if (isset($buscado)) {
-        $buscar_asesor = $ase->buscar_ases($buscado["id"]);
-        print_r($buscar_asesor);
-    }
-} 
-
 ?>
-
 
 
 
@@ -49,11 +32,7 @@ if (isset($_GET["name"])) {
             <?php foreach ($asesores as $ases): ?>
                 <tr>
                     <td><?= $ases->id;?></td>
-                    <td>
-                        <form action="listado_asesores.php" method="get">
-                            <button type="submit" name="name" value="<?= $ases->nombre?>"><?= $ases->nombre;?></button>
-                        </form>
-                    </td>
+                    <td><?= $ases->nombre;?></td>
                     <td><?= $ases->correo;?></td>
                     <td><?= $ases->telefono;?></td>
                 </tr>
