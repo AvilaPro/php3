@@ -5,8 +5,28 @@ include 'asesor.php';
 use Models\Asesor;
 
 $as= new Asesor;
+$ase =new Asesor;
+$ases = new Asesor;
 
-$asesores= $as->leerTodos();
+
+if (isset($_GET["name"])) {
+	 	
+    $buscado = $ase->buscar($_GET["name"]);
+    $curso = $ase->buscar1($buscado->id);
+    $c = $ase->buscar2($curso);
+    
+    
+    print_r($buscado);
+    echo "<br>";
+    print_r($curso);
+    echo "<br>";
+    print_r($curso->idcurso);
+    echo "<br>";
+    print_r($c);
+    if (isset($buscado1)) {
+       
+    }
+} 
 
 ?>
 
@@ -23,19 +43,21 @@ $asesores= $as->leerTodos();
             <thead>
                 <tr>
                     <th>id</th>
-                    <th>Nombre</th>
-                    <th>Correo</th>
-                    <th>telefono</th>
+                    <th>Nombre Asesor</th>
+                    <th>Curso</th>
+                    <th>Precio</th>
                 </tr>
             </thead>
             <tbody>
-            <?php foreach ($asesores as $ases): ?>
+            <?php foreach ($buscado as $ases): ?>
+            <?php foreach ($c as $curs): ?>
                 <tr>
                     <td><?= $ases->id;?></td>
                     <td><?= $ases->nombre;?></td>
-                    <td><?= $ases->correo;?></td>
-                    <td><?= $ases->telefono;?></td>
+                    <td><?= $curs->nombre;?></td>
+                    <td><?= $curs->precio;?></td>
                 </tr>
+            <?php endforeach; ?>  
             <?php endforeach; ?>
             </tbody>
         </table>

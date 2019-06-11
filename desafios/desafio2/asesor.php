@@ -5,10 +5,13 @@
 
     class Asesor extends Database{
         private $table;
-        public $tb_cursos="asesor_curso";
+        private $curso;
+        private $asesor_curso;
 
         public function __construct(){
             $this->table ="asesores";
+            $this->curso ="cursos";
+            $this->asesor_curso = "asesor_curso";
         }
 
         public function leerTodos(){
@@ -23,6 +26,18 @@
             }
         }
 
+        public function leerCursos(){
+            try{
+                $resultado2 = $this->conectar()->query(
+                    "SELECT * FROM $this->curso"
+                );
+                $resultado2->setfetchMode(\PDO::FETCH_OBJ);
+                return $resultado2->fetchAll();
+            }catch(PDOException $e){
+                echo "Error: " .$e->getMessage();
+            }
+        }
+
         public function buscar($nombre){
             try{
                 $resultado1 = $this->conectar()->query(
@@ -31,7 +46,22 @@
                 $resultado1->setfetchMode(\PDO::FETCH_OBJ);
                 if ($resultado1->rowCount()) {
                     return $resultado1->fetchAll();
-                    return $id_asesor=$resultado1["id"];
+                }
+                
+            }catch(PDOException $e){
+                echo "Error: " .$e->getMessage();
+            }
+            
+        }
+
+        public function buscar1($nombre){
+            try{
+                $resultado1 = $this->conectar()->query(
+                    "SELECT * FROM $this->asesor_curso WHERE idasesor LIKE '%$nombre%'"
+                );
+                $resultado1->setfetchMode(\PDO::FETCH_OBJ);
+                if ($resultado1->rowCount()) {
+                    return $resultado1->fetchAll();
                 }
                 
             }catch(PDOException $e){
@@ -41,19 +71,27 @@
         }
 
 
-        public function buscar_ases($id){
+
+        public function buscar2($nombre){
             try{
-                $res1= $this->conectar()->query(
-                    "SELECT * FROM asesor_curso WHERE id LIKE '$id_asesor' "
-                );
-                $res1->setfetchMode(\PDO::FETCH_OBJ);
-                if ($res1->rowCount()){
-                    return $res1->fetchAll();
+                foreach ($nombre->idcurso as $n) {
+                    $resultado1 = $this->conectar()->query(
+                        "SELECT * FROM $this->curso WHERE idcurso LIKE '%$n%'"
+                    );
                 }
-            }catch(PDOExcetptio $a){
-                echo "Error: ".$a->getMessage();
+                $resultado1->setfetchMode(\PDO::FETCH_OBJ);
+                    if ($resultado1->rowCount()) {
+                        return $resultado1->fetchAll();
+                    }
+                
+                
+            }catch(PDOException $e){
+                echo "Error: " .$e->getMessage();
             }
+            
         }
     }
+    
+
     
 ?>
