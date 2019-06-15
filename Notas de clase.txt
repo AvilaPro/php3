@@ -18,3 +18,9 @@ clase 2:
 se antecede a las clases un \ para indicar que son clases globales, porque si colocamos un namespace no encontraria esa clase.
 
 
+Metodo para eliminar espacios en blanco al principio y al final de la cadena: trim()
+
+Para validar si esta vacio: if (empty(trim($_POST('txnombre')))){ echo...   }
+
+
+
