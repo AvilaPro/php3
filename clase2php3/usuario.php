@@ -34,7 +34,7 @@ class Usuario extends Database{
     public static function buscar($nombre){
         try{
             $resultado = parent::conectar()->query(  //antes decia: $resultado = $this->conectar()->query(
-                "SELECT * FROM ".self::TABLE." WHERE nombre LIKE '$nombre'" //antes para acceder a la tabla usabamos esto: $this->table
+                "SELECT * FROM ".self::TABLE." WHERE nombre LIKE '%$nombre%'" //antes para acceder a la tabla usabamos esto: $this->table
             );
             $resultado->setfetchMode(\PDO::FETCH_OBJ);
             if($resultado->rowCount()){
@@ -90,6 +90,52 @@ class Usuario extends Database{
             header("Location: error1.php");
         }
     }
+
+    public static function eliminar($id){
+        try{
+            $usuario = "DELETE FROM ".self::TABLE." WHERE id = '%$id%'";
+            $resultado = parent::conectar()->exec($usuario);
+        }catch(PDOException $e){
+            session_start();
+            $_SESSION["error"] = $e->getMessage();
+            header("Location: error1.php");
+        }
+    }
+
+    public static function eliminarMarcados($claves){
+        try{
+            //con instrucciones preparadas (clase 4)
+            $usuario = "DELETE FROM ".self::TABLE." WHERE id =:id";
+            $resultado = parent::conectar()->prepare($usuario);
+            foreach($claves as $id){
+                $resultado->bindParam(":id", $id);
+                $resultado->execute();
+            }
+            //sin instrucciones preparadas (clase4)
+            /* foreach($claves as $id){
+                $usuario = "DELETE FROM ".self::TABLE." WHERE id ='$id'";
+                $resultado = parent::conectar()->exec($usuario);
+            } */
+            return $resultado;
+        }catch(PDOException $e){
+            session_start();
+            $_SESSION["error"] = $e->getMessage();
+            header("Location: error1.php");
+        }
+    }
+
+    /* public static function eliminarVarios($ids){
+        $id_usuarios= imploe(",",$ids);
+        try{
+            $usuario = "DELETE FROM ".self::TABLE." WHERE id IN($id_usuarios)";
+            $resultado = parent::conectar()->exec($usuario);
+            return $resultado;
+        }catch(PDOException $e){
+            session_start();
+            $_SESSION["error"] = $e->getMessage();
+            header("Location: error1.php");
+        }
+    } */
 }
 
 
