@@ -1,0 +1,15 @@
+Enunciado de la tarea 3 de la sección 2921
+Subir el proyecto comprimido con la base de datos incluida en formato SQL. Usar la base de datos del desafio anterior.
+NOTA: recuerde enviar la base de datos de lo contrario obtendra 0 pts en la evaluación.
+
+1.- Crear una pagina index.php con un menu que contenga las siguientes opciones: ver asesores, ver cursos, asignar asesores a cursos. La opción "ver asesores", debe redirigir a la pagina "listado_asesores.php" creada en el desafio anterior, debe haber un boton para "agregar" un nuevo asesor, el cual debe redirigir a otra pagina donde debe haber un formulario solicitando los campos del asesor, debe haber un boton guardar que guarde en la base de datos y redireccione a la pagina "listado_asesores.php".
+
+2.- En la pagina "listado_asesores.php", debe crear una celda nueva por cada asesor que contendra un texto "modificar" el cual sera un enlace hacia otra pagina donde debe mostrar un formulario con los datos precargados del asesor. para captar el asesor que selecciono para modificar puede enviar la clave unica del asesor en la URL como se hizo en la practica de la clase.
+
+3.- La opción "ver cursos", debe redirigir a una pagina llamada "listado_cursos.php"donde muestre todos los cursos registrados en una tabla html, debe haber un boton para "agregar" un nuevo curso, el cual debe redirigir a otra pagina donde debe haber un formulario solicitando los campos del curso, debe haber un boton guardar que guarde en la base de datos y redireccione a a la pagina "listado_cursos.php".
+
+4.- En la pagina "listado_cursos.php", debe crear una celda nueva por cada curso que contendra un texto "modificar" el cual sera un enlace hacia otra pagina donde debe mostrar un formulario con los datos precargados del curso. para captar el curso al que selecciono para modificar puede enviar la clave unica del curso en la URL como se hizo en la practica de la clase.
+
+5.- En la pagina del menu la opción "asignar asesores a cursos" debe redireccionar a una pagina llamada "asignar_asesor_curso.php" donde debe haber un formulario con 2 select uno para cargar los asesores, y otro para cargar los cursos. Debe haber un boton para registrar la asignación en base de datos(en la tabla asesor_curso) y luego de registrar mantenerse en la misma pagina. Un boton "volver" que redireccione a la pagina "index.php".
+
+Descargar Archivo Adjunto
