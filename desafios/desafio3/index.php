@@ -67,7 +67,7 @@ and open the template in the editor.
                 
                 <article class="galeria-contenedor-articulo1">
                     <div class="galeria-contenedor-articulo1-imagen1">
-                        <a href="#">
+                        <a href="listado_cursos.php">
                             <img alt="proy3" id="imgport" src="img/proyecto-3.jpg" title="proy3">
                             <div class="galeria-contenedor-articulo1-imagen1-p3">
                                 <p id="p1">Ver cursos</p>
@@ -81,7 +81,7 @@ and open the template in the editor.
 
                 <article class="galeria-contenedor-articulo1">
                     <div class="galeria-contenedor-articulo1-imagen1">
-                        <a href="#">
+                        <a href="asignar_asesor_curso.php">
                             <img alt="proy4" id="imgport" src="img/proyecto-4.jpg" title="proy4">
                             <div class="galeria-contenedor-articulo1-imagen1-p4">
                                 <p id="p1">Asignar Curso a Asesor</p>

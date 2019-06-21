@@ -1,21 +1,21 @@
 <!DOCTYPE html>
 <?php
-include_once "usuario.php";
-use Models\Usuario as U;
-
-if(isset( $_POST["guardar"])){
-    $registrado = U::insertar( $_POST["nombre"], $_POST["apellido"], $_POST["edad"], $_POST["fecha"]);
- }
+include_once "asesor.php";
+use Models\Asesor as A;
  
 ?>
 <html>
     <head>
         <meta charset="UTF-8">
-        <title></title>
+        <title>Agregar Asesor</title>
     </head>
     <body>
-        <?php
-        // put your code here
-        ?>
+        <form action="listado_asesores.php" method="POST">
+            <input type="text" name="nombre" placeholder="Ingrese nombre">
+            <input type="text" name="correo" placeholder="Ingrese correo">
+            <input type="number" name="telefono" placeholder="Ingrese telefono">
+            <button type="submit" name="guardar">Guardar</button>
+        </form>
+        
     </body>
 </html>

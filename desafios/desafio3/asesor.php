@@ -83,12 +83,50 @@
                 header("Location: error1.php");
             }
         }
+
+        public static function insertarCurso($nombre, $precio){
+            try{
+                $curso = "INSERT INTO ".self::TBCURSOS." " 
+                            ."(nombre, precio) "
+                            ."VALUES('$nombre', '$precio')";
+                $resultado = parent::conectar()->exec($curso);
+            }catch (\PDOException $e){
+                session_start();
+                $_SESSION["error"] = $e->getMessage();
+                header("Location: error1.php");
+            }
+        }
+
+        public static function insertarCurso_Asesor($idasesor, $idcurso){
+            try{
+                $curso = "INSERT INTO ".self::TBASECUR." " 
+                            ."(idasesor, idcurso) "
+                            ."VALUES('$idasesor', '$idcurso')";
+                $resultado = parent::conectar()->exec($curso);
+            }catch (\PDOException $e){
+                session_start();
+                $_SESSION["error"] = $e->getMessage();
+                header("Location: error1.php");
+            }
+        }
     
         public static function actualizar($id, $nombre, $correo, $telefono){
             try{
-                $asesor = "UPDATE ".self::TBUSUARIO
-                ." SET nombre='$nombre', correo='$correo', telefono='$telefono' WHERE id='%$id%'";
+                $asesor = "UPDATE ".self::TBASESOR
+                ." SET nombre='$nombre', correo='$correo', telefono='$telefono' WHERE id='$id'";
                 $resultado = parent::conectar()->exec($asesor);
+            }catch (\PDOException $e){
+                session_start();
+                $_SESSION["error"] = $e->getMessage();
+                header("Location: error1.php");
+            }
+        }
+
+        public static function actualizarCurso($idcurso, $nombre, $precio){
+            try{
+                $curso = "UPDATE ".self::TBCURSOS
+                ." SET nombre='$nombre', precio='$precio' WHERE idcurso='$idcurso'";
+                $resultado = parent::conectar()->exec($curso);
             }catch (\PDOException $e){
                 session_start();
                 $_SESSION["error"] = $e->getMessage();
@@ -98,8 +136,7 @@
     
         public static function leerUno($id){
             try{
-                $resultado = parent::conectar()->query(
-                    "SELECT * FROM ".self::TBUSUARIO." WHERE id ='%$id%'");
+                $resultado = parent::conectar()->query("SELECT * FROM ".self::TBASESOR." WHERE id ='$id'");
                 $resultado->setfetchMode(\PDO::FETCH_OBJ);
                 return $resultado->fetch();
             }catch (PDOException $e){
@@ -109,45 +146,38 @@
             }
         }
 
-        public static function buscar1($nombre){
+        public static function leerCurso($id){
             try{
-                $resultado1 = parent::conectar()->query(
-                    "SELECT * FROM ".self::TBASECUR." WHERE idasesor LIKE '%$nombre%'"
-                );
-                $resultado1->setfetchMode(\PDO::FETCH_OBJ);
-                if ($resultado1->rowCount()) {
-                    return $resultado1->fetchAll();
-                }
-                
-            }catch(PDOException $e){
+                $resultado = parent::conectar()->query("SELECT * FROM ".self::TBCURSOS." WHERE idcurso ='$id'");
+                $resultado->setfetchMode(\PDO::FETCH_OBJ);
+                return $resultado->fetch();
+            }catch (PDOException $e){
                 session_start();
                 $_SESSION["error"] = $e->getMessage();
                 header("Location: error1.php");
-                //echo "Error: " .$e->getMessage();
-            }      
+            }
         }
 
-
-
-        public static function buscar2($nombre){
-            try{
-                foreach ($nombre->idcurso as $n) {
-                    $resultado1 = parent::conectar()->query(
-                        "SELECT * FROM ".self::TBCURSOS." WHERE idcurso LIKE '%$n%'"
-                    );
-                }
-                $resultado1->setfetchMode(\PDO::FETCH_OBJ);
-                    if ($resultado1->rowCount()) {
-                        return $resultado1->fetchAll();
-                    }
-                
-                
-            }catch(PDOException $e){
-                session_start();
-                $_SESSION["error"] = $e->getMessage();
-                header("Location: error1.php");
-                //echo "Error: " .$e->getMessage();
-            }
+        public static function consultarCursosXAsesor($idAsesor){
+            $query = parent::conectar()->query(
+                "SELECT 
+                    cursos.nombre AS nombreCurso, 
+                    cursos.precio AS precio
+                FROM 
+                    asesor_curso
+                INNER JOIN
+                    cursos
+                ON
+                    cursos.idcurso = asesor_curso.idcurso
+                WHERE idasesor = $idAsesor"
+            );
+            $resultado = $query->setFetchMode(\PDO::FETCH_ASSOC);
+            $resultado = $query->fetchAll();
+            if ($resultado) {
+                return $resultado;
+            }else{
+                return false;
+            }           
             
         }
     }

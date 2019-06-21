@@ -2,13 +2,19 @@
 <?php
 include 'asesor.php';
 
-use Models\Asesor;
+use Models\Asesor as A;
 
-$as= new Asesor;
-$ase = new Asesor;
-$ases = new Asesor;
+$ases = new A;
 
-$asesores= $as->leerTodos();
+if(isset( $_POST["guardar"])){
+    $registrado = A::insertar( $_POST["nombre"], $_POST["correo"], $_POST["telefono"]);
+ }
+
+if(isset($_POST["guardar1"])){
+    A::actualizar($_POST["id"], $_POST["nombre"], $_POST["correo"], $_POST["telefono"]);
+}
+
+$asesores= A::leerTodos();
 
 ?>
 
@@ -18,7 +24,7 @@ $asesores= $as->leerTodos();
 <html>
     <head>
         <meta charset="UTF-8">
-        <title></title>
+        <title>Listado de Asesores</title>
     </head>
     <body>
         
@@ -28,7 +34,8 @@ $asesores= $as->leerTodos();
                     <th>id</th>
                     <th>Nombre</th>
                     <th>Correo</th>
-                    <th>telefono</th>
+                    <th>Telefono</th>
+                    <th>Modificar</th>
                 </tr>
             </thead>
             <tbody>
@@ -36,12 +43,13 @@ $asesores= $as->leerTodos();
                 <tr>
                     <td><?= $ases->id;?></td>
                     <td>
-                        <form action="curso_asesor.php" method="get">
-                            <button type="submit" name="name" value="<?= $ases->nombre?>"><?= $ases->nombre;?></button>
-                        </form>
+                        <a href="curso_asesor.php?id=<?= $ases->id;?>&nombre=<?=$ases->nombre;?>">
+                            <?=$ases->nombre ?>
+                        </a>
                     </td>
                     <td><?= $ases->correo;?></td>
                     <td><?= $ases->telefono;?></td>
+                    <td><a href="editar.php?id=<?= $ases->id;?>">  Modificar </a></td>
                 </tr>
             <?php endforeach; ?>
             </tbody>
