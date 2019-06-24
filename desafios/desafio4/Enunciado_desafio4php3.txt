@@ -1,0 +1,26 @@
+Enunciado de la tarea 4 de la sección 2921
+Realizar las siguientes actividades: 
+
+Nota: el siguiente desafio es una continuación de los desafios anteriores.
+
+1.- Colocar un checkbox en la lista de asesores, para eliminar los asesores, 
+al eliminar un asesor si este tenia cursos asignados deben eliminarse 
+dichos cursos. (en la tabla asesor_curso).
+
+2.- Colocar un boton para eliminar un curso en la pagina donde se ven 
+los datos del curso. Al eliminar el curso, se deben eliminar todos los 
+asesores que pueden dar ese curso (en la tabla asesor_curso).
+
+3.- colocar un checkbox a la lista de cursos para eliminar uno o varios 
+cursos a la vez. En caso de que presione el boton para eliminar varios 
+cursos a la vez, sin haber seleccionado almenos un curso que muestre un 
+mensaje de advertencia "Debe seleccionar un almenos un curso!".
+
+4.- utilice instrucciones preparadas para los casos de eliminación anteriores.
+
+5.- En las instrucciones preparadas vista en clase se hizo uso del 
+metodo "bindParam()" para vincular los datos con la instrucción preparada, 
+haga uso del metodo "bindValue()" para vincular los datos aplicando 
+instrucciones preparadas en los casos donde se modifican los datos de los 
+asesores y en los datos de los cursos. explique brevemente con comentarios 
+en el codigo la diferencia entre ambos metodos.
