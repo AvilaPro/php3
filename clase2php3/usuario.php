@@ -125,7 +125,7 @@ class Usuario extends Database{
     }
 
     /* public static function eliminarVarios($ids){
-        $id_usuarios= imploe(",",$ids);
+        $id_usuarios= implode(",",$ids);
         try{
             $usuario = "DELETE FROM ".self::TABLE." WHERE id IN($id_usuarios)";
             $resultado = parent::conectar()->exec($usuario);

@@ -108,7 +108,7 @@ if(isset ($_GET["nombre"])) {
                         <td><?= $user->fecha_nacimiento;?></td>
                         <td><a href="editar.php?id=<?= $user->id;?>">  Modificar </a></td>
                         <td>
-                            <form action="POST" action='index.php'>
+                            <form method="POST" action='index.php'>
                                 <input type="hidden" value="<?= $user->id;?>" name="id">
                                 <button type="submit" name="eliminar">Eliminar</button>
                             </form>

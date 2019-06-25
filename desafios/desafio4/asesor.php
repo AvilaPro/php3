@@ -178,11 +178,34 @@
                 return $resultado;
             }else{
                 return false;
-            }           
-            
+            }
         }
-    }
-    
+            
+        public static function eliminarAsesor($claves){
+            try{
+                //con instrucciones preparadas 
+                $asesor = "DELETE FROM ".self::TBASESOR." WHERE id =:id";
+                $resultado = parent::conectar()->prepare($asesor);
+                foreach($claves as $id){
+                    //la diferencia de bindValue a bindParam pareciera no ser muy trascendental aqui
+                    //ya que bindValue Vincula un valor a un parámetro y 
+                    //bindParam Vincula un parámetro al nombre de variable especificado
+                    $resultado->bindValue(":id", $id);
+                    $resultado->execute();
+                }
+                //sin instrucciones preparadas 
+                /* foreach($claves as $id){
+                    $asesor = "DELETE FROM ".self::TBASESOR." WHERE id ='$id'";
+                    $resultado = parent::conectar()->exec($asesor);
+                } */
+                return $resultado;
+            }catch(PDOException $e){
+                session_start();
+                $_SESSION["error"] = $e->getMessage();
+                header("Location: error1.php");
+            }   
+        }
 
+    }
     
 ?>
